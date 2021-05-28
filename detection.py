@@ -19,8 +19,8 @@ CORS(app)
 
 def converImgToPixel(image_name):
       # using api get rect for grabcut
-  api_key = 'acc_0ceee9e576525c4'
-  api_secret = 'a9707014db42866b88f37cac33721bd1'
+  api_key = 'acc_88676af2cb3d05d'
+  api_secret = 'f7c1da18660f8adcf25dddc239ac3518'
   image_path = image_name
 
   response = requests.post(
@@ -29,6 +29,7 @@ def converImgToPixel(image_name):
       params={'no_scaling':1},
       files={'image': open(image_path, 'rb')})
   response.json()
+  print(response)
   res = response.json().get('result').get('croppings')[0]
   x1 = res.get('x1')
   x2 = res.get('x2')
