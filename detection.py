@@ -60,7 +60,7 @@ def  analyzerImage():
     file_name = file.filename
     file.save(file_name)
     products = converImgToPixel(file_name)
-    model1 =load_model('fashion-train.h5')
+    model1 =load_model('fashion.h5')
     imgs = np.array(products)
     imgs = imgs.reshape(1,28,28,1)
     real_predictions = model1.predict(imgs)
