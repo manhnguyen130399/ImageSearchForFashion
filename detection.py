@@ -4,7 +4,6 @@ from tensorflow.keras.models import load_model
 #OPEN CV
 import cv2
 import requests
-import requests
 from flask import Flask, redirect, url_for, request
 import numpy as np
 from flask_cors import CORS
@@ -81,4 +80,4 @@ def  analyzerImage():
         os.remove(file_name)
     return {"data":output}
 if __name__ == '__main__':
-    app.run()
+    app.run(host = '0.0.0.0', port = 5000)
