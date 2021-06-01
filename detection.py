@@ -60,7 +60,7 @@ def converImgToPixel(image_name):
 def  analyzerImage():
     class_names = ['T-shirt','Trouser',' Pullover','Dress', 'Coat'
     , 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot','Lips','Eyewear'
-    ,'Nails','Headewear', 'FlipLops', 'Ties']
+    ,'Nails']
     file = request.files['file']
     file_name = file.filename
     file.save(file_name)
