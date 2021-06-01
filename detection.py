@@ -1,14 +1,10 @@
-import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 #OPEN CV
 import cv2
-import imutils as imutils
-import pandas as pd
 import requests
 import requests
-import pandas as pd 
 from flask import Flask, redirect, url_for, request
 import numpy as np
 from flask_cors import CORS
@@ -65,7 +61,7 @@ def  analyzerImage():
     file_name = file.filename
     file.save(file_name)
     products = converImgToPixel(file_name)
-    model1 =load_model('fashion.h5')
+    model1 =load_model('fashion-train.h5')
     imgs = np.array(products)
     imgs = imgs.reshape(1,28,28,1)
     real_predictions = model1.predict(imgs)
