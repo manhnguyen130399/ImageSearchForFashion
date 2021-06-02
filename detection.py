@@ -14,8 +14,8 @@ CORS(app)
 
 def converImgToPixel(image_name):
       # using api get rect for grabcut
-  api_key = 'acc_88676af2cb3d05d'
-  api_secret = 'f7c1da18660f8adcf25dddc239ac3518'
+  api_key = 'acc_aa8ba00674f2251'
+  api_secret = 'fd77c449d89dab4fa9a63a4d2205ad52'
   image_path = image_name
 
   response = requests.post(
@@ -60,7 +60,7 @@ def  analyzerImage():
     file_name = file.filename
     file.save(file_name)
     products = converImgToPixel(file_name)
-    model1 =load_model('fashion.h5')
+    model1 =load_model('fashion-normal-33.h5')
     imgs = np.array(products)
     imgs = imgs.reshape(1,28,28,1)
     real_predictions = model1.predict(imgs)
