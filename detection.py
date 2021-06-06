@@ -53,20 +53,20 @@ def converImgToPixel(image_name):
 
 @app.route('/api/image-analyzer', methods=['POST'])
 def  analyzerImage():
-    class_names = ['T-shirt','Trouser',' Pullover','Dress', 'Coat'
-    , 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot','Lips','Eyewear'
-    ,'Nails']
+    class_names = ['T-Shirt','Trouser','Pullover','Dress', 'Coat'
+    , 'Sandal && Flip-flop', 'Shirt', 'Sneaker', 'Bag', 'Ankle Boot','Lip','Eyewear'
+    ,'Nail']
     file = request.files['file']
     file_name = file.filename
     file.save(file_name)
     products = converImgToPixel(file_name)
-    model1 =load_model('fashion-normal-33.h5')
+    model1 =load_model('fashion.h5')
     imgs = np.array(products)
     imgs = imgs.reshape(1,28,28,1)
     real_predictions = model1.predict(imgs)
     real_predictions
     max_value = np.amax(real_predictions[0])
-    default_value = 0.8
+    default_value = 0.75
     num_product = 1;
     if (max_value < default_value):
         num_product = 2;
