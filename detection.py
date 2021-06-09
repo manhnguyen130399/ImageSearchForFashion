@@ -14,8 +14,8 @@ CORS(app)
 
 def converImgToPixel(image_name):
       # using api get rect for grabcut
-  api_key = 'acc_aa8ba00674f2251'
-  api_secret = 'fd77c449d89dab4fa9a63a4d2205ad52'
+  api_key = 'acc_7b056e16109e900'
+  api_secret = '2abe30d936f6c0da3c4a58867f9f1c7f'
   image_path = image_name
 
   response = requests.post(
