@@ -23,8 +23,6 @@ def converImgToPixel(image_name):
       auth=(api_key, api_secret),
       params={'no_scaling':1},
       files={'image': open(image_path, 'rb')})
-  response.json()
-  print(response)
   res = response.json().get('result').get('croppings')[0]
   x1 = res.get('x1')
   x2 = res.get('x2')
@@ -45,7 +43,6 @@ def converImgToPixel(image_name):
   mask2 = np.where((mask==2)|(mask==0), 0,1).astype('uint8')
   img = img*mask2[:,:, np.newaxis]
   img = img[y1:y2,0:width]
-  plt.imshow(img)
   img_gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
   img_gray = cv2.resize(img_gray,(28,28))
   pixel_values = img_gray.flatten()
@@ -58,6 +55,8 @@ def  analyzerImage():
     ,'Nail']
     file = request.files['file']
     file_name = file.filename
+    subfix =file_name.split(".")[-1]
+    file_name =str(np.random.random())[0:5]+'.'+subfix
     file.save(file_name)
     products = converImgToPixel(file_name)
     model1 =load_model('fashion.h5')
