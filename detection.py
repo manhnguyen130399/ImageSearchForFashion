@@ -55,8 +55,8 @@ def  analyzerImage():
     ,'Nail']
     file = request.files['file']
     file_name = file.filename
-    subfix =file_name.split(".")[-1]
-    file_name =str(np.random.random())[0:5]+'.'+subfix
+    # subfix =file_name.split(".")[-1]
+    # file_name =str(np.random.random())[0:5]+'.'+subfix
     file.save(file_name)
     products = converImgToPixel(file_name)
     model1 =load_model('fashion.h5')
